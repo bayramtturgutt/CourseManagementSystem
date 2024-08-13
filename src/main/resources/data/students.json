@@ -1,0 +1,86 @@
+[
+  {
+    "ID": "9c824227-4487-4df0-b5fc-26e726ed3c40",
+    "firstName": "Alice",
+    "lastName": "Johnson",
+    "allowedCredits": 12,
+    "courses": ["CS101", "CS302", "CS980"]
+  },
+  {
+    "ID": "3b5e9e12-1243-4b03-87c2-21a1a5f54fdd",
+    "firstName": "Bob",
+    "lastName": "Smith",
+    "allowedCredits": 9,
+    "courses": ["CS210", "WEB101"]
+  },
+  {
+    "ID": "f4e1bca6-8377-4c73-af82-2c53dbbdc3da",
+    "firstName": "Carol",
+    "lastName": "Williams",
+    "allowedCredits": 15,
+    "courses": ["CS450"]
+  },
+  {
+    "ID": "bd0ac00d-5046-4e24-9aae-7e99a0c0a9dd",
+    "firstName": "David",
+    "lastName": "Brown",
+    "allowedCredits": 7,
+    "courses": ["CS201", "CS980"]
+  },
+  {
+    "ID": "705c5929-cb72-4cb9-b798-d60c4b5ad07c",
+    "firstName": "Eve",
+    "lastName": "Davis",
+    "allowedCredits": 10,
+    "courses": ["CS410", "NET101", "CS980"]
+  },
+  {
+    "ID": "83e5b3b0-e5f7-4323-b836-ef1994df6d7b",
+    "firstName": "Frank",
+    "lastName": "Wilson",
+    "allowedCredits": 13,
+    "courses": ["CS550"]
+  },
+  {
+    "ID": "0a6b2a5e-1461-4f0e-a0e1-638806a8945e",
+    "firstName": "Grace",
+    "lastName": "Martinez",
+    "allowedCredits": 15,
+    "courses": ["CS420"]
+  },
+  {
+    "ID": "1758ab49-c651-4bb4-b3f9-6239482e91c0",
+    "firstName": "Henry",
+    "lastName": "Thomas",
+    "allowedCredits": 8,
+    "courses": []
+  },
+  {
+    "ID": "6c748f7b-bb55-4185-82e2-b3a8a4a88ef7",
+    "firstName": "Isabel",
+    "lastName": "Lee",
+    "allowedCredits": 6,
+    "courses": []
+  },
+  {
+    "ID": "94c0d384-e982-42c3-9da7-068a0c83eab2",
+    "firstName": "Jack",
+    "lastName": "Miller",
+    "allowedCredits": 9,
+    "courses": []
+  },
+  {
+    "ID": "c31963f1-724f-4c21-9d8b-4f3f9e9d6e48",
+    "firstName": "Kate",
+    "lastName": "Garcia",
+    "allowedCredits": 11,
+    "courses": ["CS980"]
+  },
+  {
+    "ID": "6b5a8f86-52c3-49b6-af4c-cdfe39e47d4c",
+    "firstName": "Liam",
+    "lastName": "Rodriguez",
+    "allowedCredits": 9,
+    "courses": ["CS980"]
+  }
+]

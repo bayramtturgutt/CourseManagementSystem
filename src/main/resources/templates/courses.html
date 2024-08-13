@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Management System</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.1/css/bootstrap.min.css}" />
+
+    <!-- Include your custom CSS for dark mode -->
+    <link rel="stylesheet" th:href="@{/css/dark-mode.css}" />
+
+    <!-- Include Bootstrap JavaScript (you need to adjust the path based on your project structure) -->
+    <script th:src="@{/webjars/bootstrap/5.3.1/js/bootstrap.bundle.min.js}"></script>
+
+    <style>
+        .top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .top a {
+            margin: 0; /* Reset default margin */
+            margin-right: 10px; /* Adjust as needed */
+        }
+
+    </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container mt-4">
+    <div class="top">
+        <h2>Courses List</h2>
+        <a th:href="@{/create-course}" class="btn btn-primary" role="button">Create</a>
+    </div>
+    <br/>
+    <table class="table-dark table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Credits</th>
+            <th>Instructor Name</th>
+            <th>Instructor Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.name}"></td>
+            <td th:text="${course.symbol}"></td>
+            <td th:text="${course.credits}"></td>
+            <td th:text="${course.instructorName}"></td>
+            <td th:text="${course.instructorEmail}"></td>
+
+            <td>
+                <div class="button-container">
+                    <a th:href="@{/delete-course/{id}(id=${course.symbol})}" class="btn btn-danger" role="button">Delete</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br/><br/>
+<div th:replace="fragments/footer :: footer"></div>
+<script>
+    // JavaScript for toggling dark mode
+    const darkModeSwitch = document.getElementById('darkModeSwitch');
+    darkModeSwitch.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode');
+    });
+</script>
+</body>
+</html>

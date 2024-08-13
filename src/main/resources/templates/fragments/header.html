@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your App Title</title>
+
+    <!-- Include Bootstrap CSS (you need to adjust the path based on your project structure) -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.1/css/bootstrap.min.css}" />
+
+    <!-- Include your custom CSS for dark mode -->
+    <link rel="stylesheet" th:href="@{/css/dark-mode.css}" />
+
+    <!-- Include Bootstrap JavaScript (you need to adjust the path based on your project structure) -->
+    <script th:src="@{/webjars/bootstrap/5.3.1/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<nav th:fragment="header" class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand fs-4 text-white" href="/">Mini Student Management System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        &nbsp&nbsp&nbsp&nbsp&nbsp
+        <div class="collapse navbar-collapse justify-content-start" id="navbarNav"> <!-- Align tabs to the left -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link fs-5 text-white" th:href="@{/students}">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-5 text-white" th:href="@{/courses}">Courses</a>
+                </li>
+            </ul>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="darkModeSwitch">
+            <label class="form-check-label" for="darkModeSwitch">Dark Mode</label>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // JavaScript for toggling dark mode
+    const darkModeSwitch = document.getElementById('darkModeSwitch');
+    darkModeSwitch.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Management System</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.1/css/bootstrap.min.css}"/>
+
+    <!-- Include your custom CSS for dark mode -->
+    <link rel="stylesheet" th:href="@{/css/dark-mode.css}"/>
+
+    <!-- Include Bootstrap JavaScript (you need to adjust the path based on your project structure) -->
+    <script th:src="@{/webjars/bootstrap/5.3.1/js/bootstrap.bundle.min.js}"></script>
+    <style>
+        .pill-checkbox-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill-checkbox {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: lightblue;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .pill-checkbox.checked {
+            background-color: green;
+            /* other styling */
+        }
+
+        /* For selected courses with total credits exceeding the limit */
+        .pill-checkbox.checked-exceeds {
+            background-color: red;
+            /* other styling */
+        }
+        .centered-form {
+            max-width: 70%; /* Adjust the width as needed */
+            margin: 0 auto; /* This centers the form horizontally */
+        }
+
+        .dark-mode .pill-checkbox{
+            color: #0C0F1D;
+        }
+
+    </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container mt-5">
+    <h2 class="mb-4">Create Student Details</h2>
+    <form th:action="@{/create-student}" th:object="${student}" method="post" class="centered-form">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" th:field="*{firstName}" required>
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" th:field="*{lastName}" required>
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="allowedCredits" class="form-label">Allowed Credits</label>
+            <input type="number" class="form-control" id="allowedCredits" th:field="*{allowedCredits}" th:value="${student.allowedCredits}" required>
+            <span th:if="${#fields.hasErrors('allowedCredits')}" th:errors="*{allowedCredits}"
+                  class="text-danger"></span>
+        </div>
+        <div class="pill-checkbox-container">
+            <label th:class="'pill-checkbox' + (${course.name} == null ? ' unchecked' : ' checked')" th:each="course : ${allCourses}" th:data-credits="${course.credits}">
+                <input type="checkbox" th:value="${course.symbol}" th:field="*{courses}" name="courses"/>
+                <span th:text="${course.name + ' (' + course.credits + ' credits)'}"></span>
+            </label>
+        </div>
+
+        <br/>
+        <button id="createButton" type="submit" class="btn btn-primary">Create Student</button>
+    </form>
+</div>
+<br/>
+<div th:replace="fragments/footer :: footer"></div>
+<script>
+    // JavaScript for toggling dark mode
+    const darkModeSwitch = document.getElementById('darkModeSwitch');
+    darkModeSwitch.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode');
+    });
+</script>
+<script>
+    const allowedCreditsInput = document.getElementById("allowedCredits");
+    const coursePills = document.querySelectorAll(".pill-checkbox");
+
+    function calculateTotalCredits() {
+        let totalCredits = 0;
+        coursePills.forEach(pill => {
+            const checkbox = pill.querySelector("input[type='checkbox']");
+            if (checkbox.checked) {
+                totalCredits += parseFloat(pill.getAttribute("data-credits"));
+            }
+        });
+        return totalCredits;
+    }
+
+    function updatePillColors() {
+        const totalCredits = calculateTotalCredits();
+        console.log(totalCredits)
+        const allowedCredits = parseFloat(allowedCreditsInput.value);
+        console.log("allowed", allowedCredits)
+
+        coursePills.forEach(pill => {
+            const checkbox = pill.querySelector("input[type='checkbox']");
+            if (checkbox.checked) {
+                const pillTotalCredits = parseFloat(pill.getAttribute("data-credits"));
+
+                if (totalCredits <= allowedCredits) {
+                    pill.classList.remove("checked-exceeds");
+                    pill.classList.add("checked");
+                } else {
+                    pill.classList.remove("checked");
+                    pill.classList.add("checked-exceeds");
+                }
+            } else {
+                pill.classList.remove("checked");
+                pill.classList.remove("checked-exceeds");
+            }
+        });
+
+        const updateButton = document.getElementById("createButton");
+        updateButton.disabled = totalCredits > allowedCredits;
+    }
+
+    allowedCreditsInput.addEventListener("input", updatePillColors);
+    coursePills.forEach(pill => {
+        const checkbox = pill.querySelector("input[type='checkbox']");
+        checkbox.addEventListener("change", updatePillColors);
+    });
+
+    updatePillColors();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Introduction to Programming",
+    "symbol": "CS101",
+    "credits": 3,
+    "instructorName": "John Smith",
+    "instructorEmail": "john@example.com"
+  },
+  {
+    "name": "Advanced Algorithms",
+    "symbol": "CS302",
+    "credits": 4,
+    "instructorName": "Jane Doe",
+    "instructorEmail": "jane@example.com"
+  },
+  {
+    "name": "Database Management",
+    "symbol": "CS210",
+    "credits": 3,
+    "instructorName": "David Johnson",
+    "instructorEmail": "david@example.com"
+  },
+  {
+    "name": "Artificial Intelligence",
+    "symbol": "CS450",
+    "credits": 4,
+    "instructorName": "Emily Williams",
+    "instructorEmail": "emily@example.com"
+  },
+  {
+    "name": "Web Development Fundamentals",
+    "symbol": "WEB101",
+    "credits": 3,
+    "instructorName": "Michael Brown",
+    "instructorEmail": "michael@example.com"
+  },
+  {
+    "name": "Data Structures",
+    "symbol": "CS201",
+    "credits": 3,
+    "instructorName": "Sarah Lee",
+    "instructorEmail": "sarah@example.com"
+  },
+  {
+    "name": "Software Engineering",
+    "symbol": "CS410",
+    "credits": 4,
+    "instructorName": "Robert Davis",
+    "instructorEmail": "robert@example.com"
+  },
+  {
+    "name": "Networking Basics",
+    "symbol": "NET101",
+    "credits": 3,
+    "instructorName": "William Wilson",
+    "instructorEmail": "william@example.com"
+  },
+  {
+    "name": "Machine Learning",
+    "symbol": "CS550",
+    "credits": 4,
+    "instructorName": "Olivia Martinez",
+    "instructorEmail": "olivia@example.com"
+  },
+  {
+    "name": "Ethical Hacking",
+    "symbol": "CS420",
+    "credits": 3,
+    "instructorName": "Daniel Thomas",
+    "instructorEmail": "daniel@example.com"
+  },
+  {
+    "name": "Advanced Java Programming",
+    "symbol": "CS980",
+    "credits": 4,
+    "instructorName": "Bayram Turgut",
+    "instructorEmail": "bayramtturgutt@gmail.com"
+  }
+]

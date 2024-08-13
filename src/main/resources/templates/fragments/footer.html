@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your App Title</title>
+
+    <!-- Include Bootstrap CSS (you need to adjust the path based on your project structure) -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.1/css/bootstrap.min.css}" />
+
+    <!-- Include your custom CSS for dark mode -->
+    <link rel="stylesheet" th:href="@{/css/dark-mode.css}" />
+
+    <!-- Include Bootstrap JavaScript (you need to adjust the path based on your project structure) -->
+    <script th:src="@{/webjars/bootstrap/5.3.1/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <!-- ... Your existing navbar code ... -->
+</nav>
+
+<!-- Content of your page goes here -->
+
+<footer th:fragment="footer" class="footer mt-auto py-3">
+    <div class="container">
+        <p class="text-center">
+            &copy; 2023 M.A.F. All rights reserved.
+        </p>
+    </div>
+</footer>
+
+<script>
+    // JavaScript for toggling dark mode
+    const darkModeSwitch = document.getElementById('darkModeSwitch');
+    darkModeSwitch.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode');
+    });
+</script>
+</body>
+</html>

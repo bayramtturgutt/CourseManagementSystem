@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Management System</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.1/css/bootstrap.min.css}" />
+
+    <!-- Include your custom CSS for dark mode -->
+    <link rel="stylesheet" th:href="@{/css/dark-mode.css}" />
+
+    <!-- Include Bootstrap JavaScript (you need to adjust the path based on your project structure) -->
+    <script th:src="@{/webjars/bootstrap/5.3.1/js/bootstrap.bundle.min.js}"></script>
+
+    <style>
+        .centered-form {
+            max-width: 70%; /* Adjust the width as needed */
+            margin: 0 auto; /* This centers the form horizontally */
+        }
+
+    </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container mt-5">
+    <h1>Create New Course</h1>
+    <form id="courseForm" th:action="@{/create-course}" th:object="${course}" method="post" class="centered-form">
+        <div class="mb-3">
+            <label for="name" class="form-label">Course Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+            <div class="invalid-feedback" id="nameValidation"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="symbol" class="form-label">Course Symbol (4-8 characters):</label>
+            <input type="text" id="symbol" name="symbol" class="form-control" minlength="4" maxlength="8" required>
+            <div class="invalid-feedback" id="symbolValidation"></div>
+            <div th:if="${#fields.hasErrors('symbol')}" th:errors="*{symbol}" class="text-danger">Course symbol already exists.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="credits" class="form-label">Credits (2-4):</label>
+            <input type="number" id="credits" name="credits" class="form-control" min="2" max="4" required>
+            <div class="invalid-feedback" id="creditsValidation"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="instructorName" class="form-label">Instructor Name:</label>
+            <input type="text" id="instructorName" name="instructorName" class="form-control" required>
+            <div class="invalid-feedback" id="instructorNameValidation"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="instructorEmail" class="form-label">Instructor Email:</label>
+            <input type="email" id="instructorEmail" name="instructorEmail" class="form-control" required>
+            <div class="invalid-feedback" id="instructorEmailValidation"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Course</button>
+    </form>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+<script>
+    // JavaScript for toggling dark mode
+    const darkModeSwitch = document.getElementById('darkModeSwitch');
+    darkModeSwitch.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode');
+    });
+</script>
+</body>
+</html>

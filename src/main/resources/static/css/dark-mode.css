@@ -1,0 +1,91 @@
+/* Apply default styles to the entire page (when dark mode is off) */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #0096AA; /* Default navbar background color */
+    color: #fff; /* Default text color */
+}
+
+/* Apply dark mode styles to the entire page */
+.dark-mode {
+    background-color: #080A12; /* Dark background color */
+    color: #fff; /* Light text color */
+}
+
+/* Adjust specific elements for dark mode */
+.dark-mode .navbar {
+    background-color: #0C0F1D; /* Darker navbar background color */
+}
+
+.dark-mode .nav-item {
+    color: #fff; /* Light text color for nav links */
+}
+
+/* Apply default styles to the footer */
+.footer {
+    background-color: #0096AA; /* Default footer background color */
+    color: #fff; /* Default text color */
+    margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+/* Apply dark mode styles to the footer */
+.dark-mode .footer {
+    background-color: #0C0F1D; /* Dark footer background color */
+    color: #fff; /* Light text color */
+}
+
+/* Apply dark mode styles to the table */
+.dark-mode .table-dark {
+    background-color: #0C0F1D; /* Dark table background color */
+    color: #fff; /* Light text color */
+    border-collapse: collapse;
+    border-radius: 10px; /* Add rounded corners */
+    overflow: hidden; /* Ensure rounded corners clip properly */
+    table-layout: fixed; /* Lock the table layout to make centering work */
+    text-align: center; /* Center the content horizontally */
+    vertical-align: middle;
+}
+
+.table-dark {
+    background-color: #ffffff;
+    color: #080A12;
+    border-collapse: collapse;
+    border-radius: 10px; /* Add rounded corners */
+    overflow: hidden; /* Ensure rounded corners clip properly */
+    table-layout: fixed; /* Lock the table layout to make centering work */
+    text-align: center; /* Center the content horizontally */
+    vertical-align: middle;
+}
+
+.dark-mode .table-dark th {
+    background-color: #080A12; /* Darker header background color */
+    color: #ffffff;
+}
+
+.table-dark th {
+    background-color: #0096AA; /* Darker header background color */
+    padding: 8px;
+    color: #ffffff;
+}
+
+tr{
+    border: 2px solid #5B4087;
+    padding: 8px;
+}
+
+table {
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the buttons */
+    gap: 10px; /* Adjust this value to control the space between buttons */
+    padding: 10px; /* Adjust this value to add padding around buttons */
+}
+

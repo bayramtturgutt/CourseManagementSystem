@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Management System</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.1/css/bootstrap.min.css}" />
+
+    <!-- Include your custom CSS for dark mode -->
+    <link rel="stylesheet" th:href="@{/css/dark-mode.css}" />
+
+    <!-- Include Bootstrap JavaScript (you need to adjust the path based on your project structure) -->
+    <script th:src="@{/webjars/bootstrap/5.3.1/js/bootstrap.bundle.min.js}"></script>
+
+    <style>
+        .top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .top a {
+            margin: 0; /* Reset default margin */
+            margin-right: 10px; /* Adjust as needed */
+        }
+
+    </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container mt-4">
+    <div class="top">
+        <h2>Student List</h2>
+        <a th:href="@{/create-student}" class="btn btn-primary" role="button">Create</a>
+    </div>
+    <br/>
+    <table class="table-dark table-striped table-hover">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Allowed Credits</th>
+            <th>Courses</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.allowedCredits}"></td>
+            <td>
+                <div class="d-flex flex-wrap">
+                <span th:each="course : ${student.courses}" class="badge bg-primary me-2 mb-2">
+                    <span th:text="${course}"></span>
+                </span>
+                </div>
+            </td>
+            <td>
+                <div class="button-container">
+                    <a th:href="@{/delete-student/{id}(id=${student.ID})}" class="btn btn-danger" role="button">Delete</a>
+                    <a th:href="@{/update-student/{id}(id=${student.ID})}" class="btn btn-primary" role="button">Update</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br/><br/><br/>
+<div th:replace="fragments/footer :: footer"></div>
+<script>
+    // JavaScript for toggling dark mode
+    const darkModeSwitch = document.getElementById('darkModeSwitch');
+    darkModeSwitch.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode');
+    });
+</script>
+</body>
+</html>
